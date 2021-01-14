@@ -1,0 +1,38 @@
+{
+    "name": "robote13/ddd-common",
+    "description": "Generic classes for domain data design based packages.",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Evgenii Dudal",
+            "email": "wolfstrace@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {
+        "php": "^7.4 | ^8",
+        "webmozart/assert": "^1.7.0",
+        "ramsey/uuid": "^4.0.1"
+    },
+    "require-dev": {
+        "codeception/codeception": "^4.1",
+        "codeception/module-phpbrowser": "^1.0.0",
+        "codeception/module-asserts": "^1.0.0",
+        "codeception/verify": "^1.3.0@stable",
+        "codeception/specify": "^1.3.0@stable"
+    },
+    "scripts": {
+        "codecept": [
+            "codecept"
+        ],
+        "test": [
+            "codecept -v run"
+        ]
+    },
+    "autoload": {
+        "psr-4": {
+            "RobotE13\\DDD\\": "src"
+        }
+    }
+}
