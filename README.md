@@ -1,4 +1,6 @@
-# Storage accounting
+# DDD common 
+
+Generic classes for domain data design based packages.
 
 ## Codeception tests
 
