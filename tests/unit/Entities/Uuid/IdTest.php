@@ -64,10 +64,10 @@ class IdTest extends \Codeception\Test\Unit
         expect('Сравниваемый UUID будет больше, чем созданный ранее (compare вернет 1)',
                 $latest->compareTo($earliest))->equals(1);
 
-        expect('Полученные из одно представления UUID совпадают (compare вернет 0)',
+        expect('Полученные из одного представления UUID совпадают (compare вернет 0)',
                 $earliest->compareTo($earliestCopy))->equals(0);
 
-        expect('Полученные из одно представления UUID совпадают',
+        expect('Полученные из одного представления UUID совпадают',
                 $earliest->isEqualTo($earliestCopy))->true();
     }
 
