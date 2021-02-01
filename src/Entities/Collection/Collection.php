@@ -24,11 +24,19 @@ interface Collection extends \IteratorAggregate, \Countable
      * @param mixed $index An index to check for.
      * @return bool Returns true on success or false on failure.
      */
-    public function exist($index):bool;
+    public function exist($index): bool;
 
-    public function put($item, bool $overwrite = true): void;
+    public function add($item): void;
 
     public function get($index);
 
     public function remove($index);
+
+    public function toArray();
+
+    /**
+     * Должна возвращать полное имя класса для типизированной коллекции.
+     * @return string имя класса объектов включаемых в коллекцию.
+     */
+    public function getItemClass();
 }

@@ -23,32 +23,14 @@ use Webmozart\Assert\Assert;
 abstract class AbstractCollection implements Collection
 {
 
-    const COLLECTION_ITEM_NAME = 'Item';
+    use CollectionTrait;
 
-    private $items = [];
+    const COLLECTION_ITEM_NAME = 'Item';
 
     public function __construct(array $items = [])
     {
         Assert::allIsInstanceOf($items, $this->getItemClass());
         $this->items = $items;
-    }
-
-    public function exist($index): bool
-    {
-        return key_exists($this->resolveIndex($index), $this->items);
-    }
-
-    /**
-     *
-     * @param mixed $index
-     * @return mixed
-     * @throws \InvalidArgumentException
-     */
-    public function get($index)
-    {
-        $key = $this->resolveIndex($index);
-        Assert::keyExists($this->items, $key, $this->getItemName() . "с индексом {$key} не существует в коллекции.");
-        return $this->items[$key];
     }
 
     /**
@@ -57,44 +39,18 @@ abstract class AbstractCollection implements Collection
      * @param bool $overwrite
      * @return void
      */
-    public function put($item, bool $overwrite = true): void
+    public function add($item): void
     {
-        $key = $this->resolveIndex($item);
-        if(!$overwrite)
+        Assert::isInstanceOf($item, $this->getItemClass());
+        if(in_array($item, $this->items))
         {
-            Assert::keyNotExists($this->items, $key, 'Данный ' . $this->getItemName() . 'уже существует.');
+            throw new \InvalidArgumentException('Данный ' . $this->getItemName() . 'уже существует в коллекции.');
         }
-        $this->items[$key] = $item;
-    }
-
-    public function remove($index)
-    {
-        $key = $this->resolveIndex($index);
-        Assert::keyExists($this->items, $key, "Обект с ключом {$key} не найден.");
-        unset($this->items[$key]);
-    }
-
-    public function count(): int
-    {
-        return count($this->items);
-    }
-
-    public function getIterator(): \Traversable
-    {
-        yield from $this->items;
-    }
-
-    private function resolveIndex($index)
-    {
-        return is_scalar($index) ? $index : $this->indexOf($index);
+        $this->items[] = $item;
     }
 
     final public function getItemName()
     {
         return static::COLLECTION_ITEM_NAME;
     }
-
-    abstract protected function indexOf($item = null);
-
-    abstract protected function getItemClass();
 }
