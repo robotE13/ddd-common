@@ -29,13 +29,4 @@ final class ContactsCollection extends AbstractCollection
         return Contact::class;
     }
 
-    /**
-     *
-     * @param Contact $item
-     */
-//    protected function resolveIndexOf($item = null)
-//    {
-//        return $item->getType() . $item->getValue();
-//    }
-
 }
