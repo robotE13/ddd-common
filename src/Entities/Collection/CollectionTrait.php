@@ -12,6 +12,8 @@
 
 namespace RobotE13\DDD\Entities\Collection;
 
+use Webmozart\Assert\Assert;
+
 /**
  *
  * @author Evgenii Dudal <wolfstrace@gmail.com>
