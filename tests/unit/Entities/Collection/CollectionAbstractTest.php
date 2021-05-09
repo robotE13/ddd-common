@@ -76,7 +76,8 @@ abstract class CollectionAbstractTest extends \Codeception\Test\Unit
     {
         $this->specify('Test fail put notunique element to collection', function() {
             $contact = new Contact('email', 'test@email.ru');
-            expect('Возникнет ошибка при добавлении неуникального элемента', fn() => $this->collection->add($contact))->throws(\InvalidArgumentException::class);
+            $contactCopy = clone $contact;
+            expect('Возникнет ошибка при добавлении неуникального элемента', fn() => $this->collection->add($contactCopy))->throws(\InvalidArgumentException::class);
         });
     }
 
