@@ -44,13 +44,8 @@ abstract class AbstractCollection implements Collection
         Assert::isInstanceOf($item, $this->getItemClass());
         if(in_array($item, $this->items))
         {
-            throw new \InvalidArgumentException('Данный ' . $this->getItemName() . 'уже существует в коллекции.');
+            throw new \Webmozart\Assert\InvalidArgumentException($this->getItemName() . ' already exist.');
         }
         $this->items[] = $item;
-    }
-
-    final public function getItemName()
-    {
-        return static::COLLECTION_ITEM_NAME;
     }
 }

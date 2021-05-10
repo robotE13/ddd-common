@@ -18,6 +18,7 @@ abstract class CollectionAbstractTest extends \Codeception\Test\Unit
     protected $tester;
 
     /**
+     * @var \RobotE13\DDD\Entities\Collection\Collection
      * @specify
      */
     protected $collection;
@@ -77,7 +78,12 @@ abstract class CollectionAbstractTest extends \Codeception\Test\Unit
         $this->specify('Test fail put notunique element to collection', function() {
             $contact = new Contact('email', 'test@email.ru');
             $contactCopy = clone $contact;
-            expect('Возникнет ошибка при добавлении неуникального элемента', fn() => $this->collection->add($contactCopy))->throws(\InvalidArgumentException::class);
+            expect('Возникнет ошибка при добавлении неуникального элемента', fn() => $this->collection->add($contactCopy))
+                    ->throws(\Webmozart\Assert\InvalidArgumentException::class); //now Webmozart asserts throws ownn InvalidArgument that extended PHP Platform \InvalidArgument exception
+        });
+
+        $this->specify('Remove not exists.',function(){
+                expect('', fn() => $this->collection->remove(111))->throws(\Webmozart\Assert\InvalidArgumentException::class, "Contact with key `111` not present in collection.");
         });
     }
 

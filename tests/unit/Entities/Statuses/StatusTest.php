@@ -37,7 +37,7 @@ class StatusTest extends \Codeception\Test\Unit
     public function testFailToCreateWithUnknownStateValue()
     {
         expect('Exception on create object with unknown state', fn() => new SwitchState(10000))
-                ->throws(\InvalidArgumentException::class);
+                ->throws(\Webmozart\Assert\InvalidArgumentException::class);
     }
 
     public function testSwitchStates()

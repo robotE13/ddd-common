@@ -36,7 +36,7 @@ abstract class AbsractHashableCollection implements Collection, HashableIndex
     public function add($item): void
     {
         $index = $this->resolveIndexOf($item);
-        Assert::keyNotExists($this->items, $index);
+        Assert::keyNotExists($this->items, $index, $this->getItemName() . ' already exist.');
         $this->items[$index] = $item;
         return;
     }

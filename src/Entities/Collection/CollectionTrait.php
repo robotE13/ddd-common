@@ -42,7 +42,7 @@ trait CollectionTrait
 
     public function remove($key)
     {
-        Assert::keyExists($this->items, $key, "Обект с ключом {$key} не найден.");
+        Assert::keyExists($this->items, $key, $this->getItemName() . " with key `{$key}` not present in collection.");
         unset($this->items[$key]);
     }
 
@@ -59,6 +59,11 @@ trait CollectionTrait
     public function getIterator(): \Traversable
     {
         yield from $this->items;
+    }
+
+    final public function getItemName()
+    {
+        return static::COLLECTION_ITEM_NAME;
     }
 
 }
