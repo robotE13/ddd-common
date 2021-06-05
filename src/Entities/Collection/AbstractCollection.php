@@ -15,9 +15,9 @@ namespace RobotE13\DDD\Entities\Collection;
 use Webmozart\Assert\Assert;
 
 /**
- * AbstractCollection.
- * Базовый класс коллекций
+ * Базовый класс для реализации типизированных коллекций
  *
+ * Индексами коллекции будут являться порядковые номера добавленных элементов.
  * @author Evgenii Dudal <wolfstrace@gmail.com>
  */
 abstract class AbstractCollection implements Collection

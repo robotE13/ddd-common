@@ -13,18 +13,18 @@
 namespace RobotE13\DDD\Entities\Collection\Contact;
 
 use RobotE13\DDD\Entities\Collection\Contact\Contact;
-use RobotE13\DDD\Entities\Collection\AbsractHashableCollection;
+use RobotE13\DDD\Entities\Collection\AbstractHashableCollection;
 
 /**
  * Description of HashableContactsCollection
  *
  * @author Evgenii Dudal <wolfstrace@gmail.com>
  */
-class ContactsCollectionHashable extends AbsractHashableCollection
+class ContactsCollectionHashable extends AbstractHashableCollection
 {
 
     const COLLECTION_ITEM_NAME = 'Contact';
-    
+
     public function getItemClass(): string
     {
         return Contact::class;
@@ -35,9 +35,9 @@ class ContactsCollectionHashable extends AbsractHashableCollection
      * @param Contact $item
      * @return string
      */
-    public function resolveIndexOf($item)
+    public function resolveIndexOf($item): string
     {
-        return "{$item->getType()}_{$item->getValue()}";
+        return hash('crc32', "{$item->getType()}_{$item->getValue()}");
     }
 
 }

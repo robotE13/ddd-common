@@ -15,11 +15,13 @@ namespace RobotE13\DDD\Entities\Collection;
 use Webmozart\Assert\Assert;
 
 /**
- * Description of AbsractHashableCollection
+ * Базовый класс для реализации коллекций индексированных хешами объектов.
  *
+ * Индексами коллекции будут являться хеш-ключи вычислаемые из значений
+ * содержащихся в добавляемом объекте. {@see HashableIndex::resolveIndexOf($item)}
  * @author Evgenii Dudal <wolfstrace@gmail.com>
  */
-abstract class AbsractHashableCollection implements Collection, HashableIndex
+abstract class AbstractHashableCollection implements Collection, HashableIndex
 {
     use CollectionTrait;
 

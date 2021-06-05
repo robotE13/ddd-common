@@ -19,9 +19,18 @@ namespace RobotE13\DDD\Entities\Collection;
 interface HashableIndex
 {
     /**
-     * Получение ключа для доступа к элементу коллекции.
-     * Функция определяет способ получение хеш-ключа для внутренноего массива элементов коллекции.
-     * @param type $item
+     * Вычисляет ключ для переданного объекта - элемента коллекции
+     *
+     * Функция определяет способ получение хеш-ключа из объекта.
+     * Например:
+     * <code>
+     *      public function resolveIndexOf($item)
+     *      {
+     *          return hash('crc32', $item->getAttributeOne() . $item->getAttributeTwo());
+     *      }
+     * </code>
+     * @param mixed $item
+     * @return string hash-code
      */
-    public function resolveIndexOf($item);
+    public function resolveIndexOf($item):string;
 }
