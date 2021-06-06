@@ -1,3 +1,4 @@
 #!/bin/bash
 
-docker run -it --rm -v ${PWD}/:/usr/src/project robote13/php-library-dev composer $@
+docker run -it --rm -v /${PWD}://usr/src/project robote13/php-library-dev composer $@ ||
+docker run -i --rm -v /${PWD}://usr/src/project robote13/php-library-dev composer $@
