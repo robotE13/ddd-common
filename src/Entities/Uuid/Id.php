@@ -100,10 +100,10 @@ class Id
     public function __call($name, $arguments)
     {
         $isAllowedGetter = strpos($name, 'get') === 0 && in_array($name, ['getBytes', 'getHex', 'getInteger']);
-        if($isAllowedGetter && method_exists($this->uuid, $name))
+        if ($isAllowedGetter && method_exists($this->uuid, $name))
         {
             return $this->uuid->$name();
-        } elseif($name === "getString")
+        } elseif ($name === "getString")
         {
             return $this->uuid->toString();
         }

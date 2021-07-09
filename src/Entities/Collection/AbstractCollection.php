@@ -42,10 +42,11 @@ abstract class AbstractCollection implements Collection
     public function add($item): void
     {
         Assert::isInstanceOf($item, $this->getItemClass());
-        if(in_array($item, $this->items))
+        if (in_array($item, $this->items))
         {
             throw new \Webmozart\Assert\InvalidArgumentException($this->getItemName() . ' already exist.');
         }
         $this->items[] = $item;
     }
+
 }
