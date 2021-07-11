@@ -1,4 +1,6 @@
 # DDD common 
+[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/robotE13/ddd-common/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/robotE13/ddd-common/?branch=master)
+[![Build Status](https://scrutinizer-ci.com/g/robotE13/ddd-common/badges/build.png?b=master)](https://scrutinizer-ci.com/g/robotE13/ddd-common/build-status/master)
 
 Generic classes for domain data design based packages.
 
