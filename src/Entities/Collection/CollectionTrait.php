@@ -21,6 +21,7 @@ use Webmozart\Assert\Assert;
 trait CollectionTrait
 {
 
+    protected static $collectionItemName = 'Item';
     private $items = [];
 
     public function exist($index): bool
@@ -36,13 +37,13 @@ trait CollectionTrait
      */
     public function get($key)
     {
-        Assert::keyExists($this->items, $key, $this->getItemName() . " with key `{$key}` not present in collection");
+        Assert::keyExists($this->items, $key, static::getItemName() . " with key `{$key}` not present in collection");
         return clone $this->items[$key];
     }
 
-    public function remove($key)
+    public function remove($key): void
     {
-        Assert::keyExists($this->items, $key, $this->getItemName() . " with key `{$key}` not present in collection.");
+        Assert::keyExists($this->items, $key, static::getItemName() . " with key `{$key}` not present in collection.");
         unset($this->items[$key]);
     }
 
@@ -61,9 +62,9 @@ trait CollectionTrait
         yield from $this->items;
     }
 
-    final public function getItemName()
+    public static function getItemName(): string
     {
-        return static::COLLECTION_ITEM_NAME;
+        return 'Item';
     }
 
 }

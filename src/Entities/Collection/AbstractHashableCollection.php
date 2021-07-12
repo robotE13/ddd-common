@@ -25,7 +25,7 @@ abstract class AbstractHashableCollection implements Collection, HashableIndex
 {
     use CollectionTrait;
 
-    const COLLECTION_ITEM_NAME = 'Item';
+//    const COLLECTION_ITEM_NAME = 'Item';
 
     public function __construct(array $items = [])
     {

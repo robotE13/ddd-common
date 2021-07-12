@@ -23,11 +23,14 @@ use RobotE13\DDD\Entities\Collection\AbstractHashableCollection;
 class ContactsCollectionHashable extends AbstractHashableCollection
 {
 
-    const COLLECTION_ITEM_NAME = 'Contact';
-
     public function getItemClass(): string
     {
         return Contact::class;
+    }
+
+    public static function getItemName(): string
+    {
+        return 'Contact';
     }
 
     /**

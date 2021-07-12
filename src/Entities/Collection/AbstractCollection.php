@@ -18,14 +18,15 @@ use Webmozart\Assert\Assert;
  * Базовый класс для реализации типизированных коллекций
  *
  * Индексами коллекции будут являться порядковые номера добавленных элементов.
+ * @method bool exist($index) {@see Collection::exist($index)}
+ * @method mixed get($index) {@see Collection::get($index)}
+ * @method void remove($index) {@see Collection::remove($index)}
  * @author Evgenii Dudal <wolfstrace@gmail.com>
  */
 abstract class AbstractCollection implements Collection
 {
 
     use CollectionTrait;
-
-    const COLLECTION_ITEM_NAME = 'Item';
 
     public function __construct(array $items = [])
     {

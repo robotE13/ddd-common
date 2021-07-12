@@ -22,11 +22,14 @@ use RobotE13\DDD\Entities\Collection\AbstractCollection;
 final class ContactsCollection extends AbstractCollection
 {
 
-    const COLLECTION_ITEM_NAME = 'Contact';
-
-    public function getItemClass()
+    public function getItemClass(): string
     {
         return Contact::class;
+    }
+
+    public static function getItemName(): string
+    {
+        return 'Contact';
     }
 
 }
